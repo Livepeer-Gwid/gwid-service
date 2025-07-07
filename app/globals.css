@@ -53,7 +53,7 @@
   --popover-foreground: oklch(0.13 0.028 261.692);
   --primary: oklch(0.3803 0.1063 280.08);
   --primary-foreground: oklch(0.985 0.002 247.839);
-  --secondary: oklch(0.967 0.003 264.542);
+  --secondary: oklch(0.1826 0.002 286.2);
   --secondary-foreground: oklch(0.21 0.034 264.665);
   --muted: oklch(0.967 0.003 264.542);
   --muted-foreground: oklch(0.551 0.027 264.364);
@@ -114,11 +114,44 @@
 
 @layer base {
   .container {
-    @apply mx-auto px-5;
+    @apply mx-auto xl:px-20 md:px-10 px-5;
   }
 }
 
 /* Utilities */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .bg-radial-gradient {
   background: radial-gradient(circle at bottom right, #a0b3f7, #6c5ce7);
+}
+
+.fade-text {
+  background-image: linear-gradient(to right, #fff 0%, #fff 30%, #000 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.features-fade-text {
+  background-image: linear-gradient(to right, #fff 0%, #fff 30%, #3a3a3a 110%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.primary-text-fade {
+  background-image: linear-gradient(
+    to right,
+    #393979 0%,
+    #393979 1%,
+    #ffffff 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
