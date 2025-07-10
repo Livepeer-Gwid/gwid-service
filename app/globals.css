@@ -155,3 +155,19 @@
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
+
+.neomorphic-card {
+  border-radius: 50px;
+  background: rgba(
+    26,
+    26,
+    26,
+    0.1
+  ); /* dark background with some transparency */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    inset 0px 0px 103px rgba(255, 255, 255, 0.4),
+    inset -7.38px -22.15px 17.76px rgba(255, 255, 255, 0.4),
+    inset 7.38px 22.15px 17.76px rgba(255, 255, 255, 0.4);
+}
