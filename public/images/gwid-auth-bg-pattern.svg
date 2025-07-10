@@ -1,0 +1,17 @@
+<svg width="579" height="567" viewBox="0 0 579 567" fill="none" xmlns="http://www.w3.org/2000/svg">
+<foreignObject x="-132" y="-145" width="873" height="1006"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(17.97px);clip-path:url(#bgblur_0_202_80_clip_path);height:100%;width:100%"></div></foreignObject><g filter="url(#filter0_g_202_80)" data-figma-bg-blur-radius="35.9367">
+<rect x="-32" y="-45" width="673" height="806" fill="black" fill-opacity="0.5"/>
+</g>
+<defs>
+<filter id="filter0_g_202_80" x="-132" y="-145" width="873" height="1006" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feTurbulence type="fractalNoise" baseFrequency="0.0099999997764825821 0.0099999997764825821" numOctaves="3" seed="4443" />
+<feDisplacementMap in="shape" scale="200" xChannelSelector="R" yChannelSelector="G" result="displacedImage" width="100%" height="100%" />
+<feMerge result="effect1_texture_202_80">
+<feMergeNode in="displacedImage"/>
+</feMerge>
+</filter>
+<clipPath id="bgblur_0_202_80_clip_path" transform="translate(132 145)"><rect x="-32" y="-45" width="673" height="806"/>
+</clipPath></defs>
+</svg>
