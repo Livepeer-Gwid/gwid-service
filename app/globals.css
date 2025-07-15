@@ -171,3 +171,9 @@
     inset -7.38px -22.15px 17.76px rgba(255, 255, 255, 0.4),
     inset 7.38px 22.15px 17.76px rgba(255, 255, 255, 0.4);
 }
+
+.bg-app-surface {
+  background:
+    radial-gradient(400px at 95% 5%, #1e1e1e 0%, transparent 80%),
+    radial-gradient(400px at 5% 95%, #1e1e1e 0%, transparent 80%), #121212;
+}
