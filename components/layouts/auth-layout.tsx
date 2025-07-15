@@ -11,10 +11,10 @@ const AuthLayout = ({ children }: { children: ReactNode }) => {
         <img
           src="/images/gwid-auth-bg.svg"
           alt=""
-          className="w-full h-full max-h-full absolute -bottom-48 object-cover -z-10"
+          className="w-full h-full max-h-full absolute -bottom-16 object-cover -z-10"
         />
 
-        <div className="flex w-full h-[80%] items-center justify-center">
+        <div className="flex w-full h-[80%] items-center justify-center z-10 pt-24">
           {children}
         </div>
       </div>

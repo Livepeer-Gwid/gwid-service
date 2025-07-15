@@ -48,7 +48,7 @@ const Signup = () => {
       <div
         className="w-full h-full rounded-[inherit] py-16 px-12"
         style={{
-          backgroundColor: "rgba(0, 0, 0, 0.3)",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
           backgroundRepeat: "no-repeat",
         }}
       >
