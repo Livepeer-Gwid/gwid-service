@@ -3,12 +3,18 @@ import { Button } from "@/components/ui/button";
 import { List, LayoutGrid, Plus } from "lucide-react";
 import SearchGateway from "@/components/gateway/search-gateway";
 import GatewayCard from "@/components/gateway/gateway-card";
+import Image from "next/image";
 
 const Gateways = () => {
   return (
     <div className="w-full flex flex-col space-y-9">
       <div className="flex items-center space-x-4">
-        <img src="/icons/gateway-header.svg" alt="Gateways" />
+        <Image
+          src="/icons/gateway-header.svg"
+          width={45}
+          height={45}
+          alt="Gateway"
+        />
         <h1 className="text-[32px] font-semibold text-white">Gateways</h1>
       </div>
 

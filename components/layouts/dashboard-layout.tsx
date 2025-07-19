@@ -1,6 +1,5 @@
 import { FC, PropsWithChildren } from "react";
 import Sidebar from "../core/sidebar";
-import { Button } from "../ui/button";
 import { HelpCircle, UserCircle } from "lucide-react";
 import { Nunito } from "next/font/google";
 
