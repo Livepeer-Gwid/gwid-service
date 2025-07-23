@@ -1,4 +1,4 @@
-import { BadgeCheck, Clock, LayoutDashboard } from "lucide-react";
+import { BadgeCheck, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PanelLeftIcon } from "../icons/panel-left-icon";
 

@@ -4,6 +4,7 @@ import { List, LayoutGrid, Plus } from "lucide-react";
 import SearchGateway from "@/components/gateway/search-gateway";
 import GatewayCard from "@/components/gateway/gateway-card";
 import Image from "next/image";
+import Link from "next/link";
 
 const Gateways = () => {
   return (
@@ -39,9 +40,11 @@ const Gateways = () => {
             </Button>
           </div>
 
-          <Button className="h-full">
-            <Plus className="mr-2" /> Launch New Gateway
-          </Button>
+          <Link href="/gateways/launch" passHref>
+            <Button className="h-full">
+              <Plus className="mr-2" /> Launch New Gateway
+            </Button>
+          </Link>
         </div>
 
         <div className="w-full grid grid-cols-3 gap-6 pb-7">

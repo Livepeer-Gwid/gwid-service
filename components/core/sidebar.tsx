@@ -34,7 +34,7 @@ const Sidebar: FC = () => {
 
   return (
     <aside
-      className={`h-full w-[25%] border-r-2 border-[#383A3F] px-7 pb-7 pt-12.5 flex flex-col space-y-7 ${nunito.className}`}
+      className={`h-screen w-[20%] border-r-2 border-[#383A3F] px-7 pb-7 pt-12.5 flex flex-col space-y-7 fixed left-0 top-0 ${nunito.className}`}
     >
       <div className="flex items-center justify-between">
         <div className="flex flex-col space-y-4 text-white">
@@ -58,7 +58,7 @@ const Sidebar: FC = () => {
 
       <div className="flex flex-col space-y-4">
         {navItems.map(({ label, href, icon: Icon }) => {
-          const isActive = pathname === href;
+          const isActive = pathname.includes(href);
 
           return (
             <Link

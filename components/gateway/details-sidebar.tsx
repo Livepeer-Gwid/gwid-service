@@ -50,7 +50,7 @@ const DetailsSidebar = ({ specifyDetailsForm, selectStackForm }: Props) => {
           <SelectTrigger className="w-full text-white bg-[#171B2080] border-[1.5px] border-[#383A3F] rounded-[10px] h-fit m-0 [&>svg]:!text-white [&>svg]:size-5">
             <SelectValue placeholder="Select a version" />
           </SelectTrigger>
-          <SelectContent className="text-white bg-[#171B2080] border-[1.5px] border-[#383A3F]">
+          <SelectContent className="text-white bg-[#000] border-[1.5px] border-[#383A3F]">
             <SelectItem value="v1.0">v1.0</SelectItem>
             <SelectItem value="v2.0">v2.0</SelectItem>
             <SelectItem value="v3.0">v3.0</SelectItem>
