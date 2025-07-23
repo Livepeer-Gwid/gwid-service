@@ -18,7 +18,7 @@ export function GatewayStepper({ currentStep }: StepperProps) {
             <div
               className={cn(
                 "flex items-center justify-center min-w-8 w-8 h-8 rounded-full font-semibold transition-colors text-white",
-                currentStep === step.id ? "bg-[#25213D]" : "bg-[#383A3F]"
+                currentStep >= step.id ? "bg-[#25213D]" : "bg-[#383A3F]"
               )}
             >
               {step.id}
@@ -26,7 +26,7 @@ export function GatewayStepper({ currentStep }: StepperProps) {
             <div
               className={cn(
                 "font-medium whitespace-nowrap",
-                currentStep === step.id ? "text-white" : "text-[#FFFFFF80]"
+                currentStep >= step.id ? "text-white" : "text-[#FFFFFF80]"
               )}
             >
               {step.title}
@@ -37,7 +37,7 @@ export function GatewayStepper({ currentStep }: StepperProps) {
             <div
               className={cn(
                 "h-[2px] w-full bg-white",
-                currentStep === step.id ? "opacity-100" : "opacity-40"
+                currentStep >= step.id ? "opacity-100" : "opacity-40"
               )}
             ></div>
           )}
