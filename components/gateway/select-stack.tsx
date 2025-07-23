@@ -1,6 +1,5 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { StackSchemType, stackSchema } from "@/lib/schema/select-stack.schema";
+import { UseFormReturn } from "react-hook-form";
+import { StackSchemType } from "@/lib/schema/select-stack.schema";
 import {
   Form,
   FormControl,
@@ -13,20 +12,17 @@ import {
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Image from "next/image";
+import { Dispatch, SetStateAction } from "react";
+import { ArrowRight } from "lucide-react";
 
-const SelectStackForm = () => {
-  const form = useForm<StackSchemType>({
-    resolver: zodResolver(stackSchema),
-    defaultValues: {
-      stackType: "transcoding",
-      cloudProvider: "dedicated",
-      region: "amsterdam",
-    },
-  });
+type Props = {
+  form: UseFormReturn<StackSchemType>;
+  setCurrentStep: Dispatch<SetStateAction<number>>;
+};
 
-  function onSubmit(values: StackSchemType) {
-    console.log("Form values:", values);
-    // Pass to next step
+const SelectStackForm = ({ form, setCurrentStep }: Props) => {
+  function onSubmit() {
+    setCurrentStep(2);
   }
 
   return (
@@ -268,9 +264,12 @@ const SelectStackForm = () => {
           />
         </div>
 
-        <div className="flex justify-end">
+        <div className="flex justify-end items-center space-x-2">
+          <Button variant="ghost" type="button">
+            Cancel
+          </Button>
           <Button type="submit" className="px-6">
-            Next
+            Next <ArrowRight size={20} className="ml-1" />
           </Button>
         </div>
       </form>
