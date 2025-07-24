@@ -173,7 +173,10 @@
 }
 
 .bg-app-surface {
+  background: radial-gradient(at 70% 15%, #1f1f20 30%, transparent 60%);
+}
+
+.bg-sidebar-surface {
   background:
-    radial-gradient(at 70% 15%, #1f1f20 30%, transparent 60%),
-    radial-gradient(at bottom left, #1f1f20 15%, transparent 40%), #121212;
+    radial-gradient(at bottom left, #1f1f20 20%, transparent 60%), #121212;
 }
