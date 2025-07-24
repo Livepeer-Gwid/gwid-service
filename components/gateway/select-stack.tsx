@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Image from "next/image";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 
 type Props = {
@@ -24,6 +24,10 @@ const SelectStackForm = ({ form, setCurrentStep }: Props) => {
   function onSubmit() {
     setCurrentStep(2);
   }
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
 
   return (
     <Form {...form}>

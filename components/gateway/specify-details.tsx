@@ -19,7 +19,7 @@ import Image from "next/image";
 import { StackSchemType } from "@/lib/schema/select-stack.schema";
 import DetailsSidebar from "./details-sidebar";
 import { Button } from "../ui/button";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 type Props = {
   form: UseFormReturn<SpecifyDetailsSchemaType>;
@@ -28,6 +28,10 @@ type Props = {
 };
 
 const SpecifyDetails = ({ form, selectStackForm, setCurrentStep }: Props) => {
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
   return (
     <Form {...form}>
       <form className="grid grid-cols-1 md:grid-cols-3 gap-4">
