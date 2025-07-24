@@ -40,7 +40,7 @@ const Gateways = () => {
             </Button>
           </div>
 
-          <Link href="/gateways/launch" passHref>
+          <Link href="/auth/gateway" passHref>
             <Button className="h-full">
               <Plus className="mr-2" /> Launch New Gateway
             </Button>
