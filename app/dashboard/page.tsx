@@ -35,16 +35,19 @@ const Home = () => {
           name="Amazon Web Services"
           description="Host in your own cloud"
           img="/icons/gwid-aws.svg"
+          service="aws"
         />
         <ServiceCard
           name="Microsoft Azure"
           description="Host in your own cloud"
           img="/icons/gwid-azure.svg"
+          service="azure"
         />
         <ServiceCard
           name="Google Cloud Platform"
           description="Host in your own cloud"
           img="/icons/gwid-gcp.svg"
+          service="gcp"
         />
       </div>
 
