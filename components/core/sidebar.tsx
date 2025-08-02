@@ -22,7 +22,7 @@ const nunito = Nunito({
 });
 
 const navItems = [
-  { label: "Home", href: "/home", icon: Home },
+  { label: "Home", href: "/dashboard", icon: Home },
   { label: "Gateways", href: "/gateways", icon: GatewayIcon },
   { label: "Add-ons", href: "/addons", icon: Layers },
   { label: "Projects", href: "/projects", icon: BriefcaseBusiness },
