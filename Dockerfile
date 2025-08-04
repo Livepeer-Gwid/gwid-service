@@ -7,9 +7,8 @@ WORKDIR /app
 
 # Copy package files
 COPY package.json ./
-
 # Install dependencies
-RUN npm intsall
+RUN yarn install --production
 
 # Stage 2: Build
 FROM node:lts-alpine AS builder
@@ -23,7 +22,7 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED 1
 
 # Build the application
-RUN npm run build
+RUN yarn build
 
 # Stage 3: Production runtime
 FROM node:lts-alpine AS runner
