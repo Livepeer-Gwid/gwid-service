@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import GatewayIcon from "../icons/gateway-icon";
+import Image from "next/image";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -38,7 +39,13 @@ const Sidebar: FC = () => {
     >
       <div className="flex items-center justify-between">
         <div className="flex flex-col space-y-4 text-white">
-          <img src="/images/gwid-logo.svg" alt="Gwid" className="w-20 h-8" />
+          <Image
+            width={80}
+            height={32}
+            src="/images/gwid-logo.svg"
+            alt="Gwid"
+            className="w-20 h-8"
+          />
           <Button
             variant="link"
             className="text-white px-0 hover:no-underline text-sm h-fit py-0"

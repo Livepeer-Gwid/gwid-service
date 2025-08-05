@@ -1,12 +1,7 @@
 import React from "react";
-import { Nunito } from "next/font/google";
 import { Button } from "../ui/button";
 import { Facebook, Instagram, Youtube } from "lucide-react";
-
-const nunito = Nunito({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
+import Image from "next/image";
 
 const quickLinks = [
   { name: "Why Us", href: "#" },
@@ -20,7 +15,7 @@ const quickLinks = [
 const Footer = () => {
   return (
     <div className="px-8 flex flex-col space-y-2">
-      <img src="/images/gwid-logo.svg" alt="Gwid" className="w-20 h-16" />
+      <Image width={80} height={64} src="/images/gwid-logo.svg" alt="Gwid" />
 
       <hr className="border-white opacity-20 w-full" />
 
