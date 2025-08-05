@@ -5,7 +5,7 @@ import { Nunito } from "next/font/google";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SigninSchema, SigninSchemaType } from "@/lib/schema/signin.schema";
-import { AlertCircle, ArrowUpRight, Eye, EyeOff } from "lucide-react";
+import { ArrowUpRight, Eye, EyeOff } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -26,7 +26,7 @@ const nunito = Nunito({
 
 const Signin = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [errorResponse, setErrorResponse] = useState<string | null>(null);
+  // const [errorResponse, setErrorResponse] = useState<string | null>(null);
 
   const form = useForm<SigninSchemaType>({
     resolver: zodResolver(SigninSchema),
@@ -47,7 +47,7 @@ const Signin = () => {
       <div
         className="w-full h-full rounded-[inherit] py-16 px-12"
         style={{
-          backgroundColor: "rgba(0, 0, 0, 0.3)",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
           backgroundRepeat: "no-repeat",
         }}
       >

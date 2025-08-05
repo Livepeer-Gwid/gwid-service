@@ -6,6 +6,7 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Features from "@/components/home/features";
 import EffortlessGatewayOps from "@/components/home/effortless-gateway-ops";
 import Footer from "@/components/home/footer";
+import Image from "next/image";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -16,19 +17,21 @@ export default function Home() {
   return (
     <main>
       <section className="w-full h-auto relative">
-        <img
+        <Image
+          width={1000}
+          height={1000}
           src="/images/gwid-hero-section.svg"
-          className="w-screen h-full absolute object-cover -z-10 object-top -top-16"
+          className="w-screen h-full absolute object-cover -z-10 object-top bottom-16"
           alt="Gwid Hero Section"
         />
 
-        <div className="container">
+        <div className="w-full fixed">
           <div className="w-fit mx-auto py-5">
             <Navbar />
           </div>
         </div>
 
-        <div className="flex flex-col h-full pt-40 justify-center items-center">
+        <div className="flex flex-col h-full pt-60 justify-center items-center">
           <div className="container flex flex-col space-y-10">
             <h2 className="text-[55px] font-medium text-center fade-text">
               Revolutionizing Gateway <br /> Deployment with Livepeer.
@@ -43,7 +46,9 @@ export default function Home() {
               Get Started <ArrowUpRight size={20} className="ml-2" />
             </Button>
             <div className="w-3/5 mx-auto">
-              <img
+              <Image
+                width={1000}
+                height={1000}
                 src="/images/hero-section-mockup.svg"
                 className="w-full mx-auto"
                 alt="Gwid Hero Section"
@@ -113,12 +118,16 @@ export default function Home() {
 
       <section>
         <div className="relative w-full flex items-center justify-center">
-          <img
+          <Image
+            width={1000}
+            height={1000}
             src="/images/gwid-footer-pattern.svg"
             className="w-full"
             alt=""
           />
-          <img
+          <Image
+            width={600}
+            height={600}
             src="/images/gwid-pattern-logo.svg"
             className="absolute bottom-10"
             alt=""

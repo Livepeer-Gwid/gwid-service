@@ -26,7 +26,7 @@ const nunito = Nunito({
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [errorResponse, setErrorResponse] = useState<string | null>(null);
+  // const [errorResponse, setErrorResponse] = useState<string | null>(null);
 
   const form = useForm<SignupSchemaType>({
     resolver: zodResolver(SignupSchema),
@@ -43,12 +43,12 @@ const Signup = () => {
 
   return (
     <div
-      className={`md:w-[579px] w-[95vh] mx-auto neomorphic-card rounded-[50px] ${nunito.className} text-white`}
+      className={`md:w-[579px] w-[95vw] mx-auto neomorphic-card rounded-[50px] ${nunito.className} text-white`}
     >
       <div
         className="w-full h-full rounded-[inherit] py-16 px-12"
         style={{
-          backgroundColor: "rgba(0, 0, 0, 0.3)",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
           backgroundRepeat: "no-repeat",
         }}
       >

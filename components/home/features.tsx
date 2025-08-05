@@ -1,4 +1,3 @@
-import { Dot } from "lucide-react";
 import React from "react";
 import { Nunito } from "next/font/google";
 
@@ -44,7 +43,7 @@ const Features = () => {
             className={`${nunito.className} font-medium text-white leading-7 text-left`}
           >
             GWID gives you everything you need to deploy and manage <br /> your
-            Livepeer gateway. From setup to scaling, it's all seamless.
+            Livepeer gateway. From setup to scaling, it&aops;s all seamless.
           </p>
         </div>
       </div>
