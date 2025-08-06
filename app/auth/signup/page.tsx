@@ -18,6 +18,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ContinueWithGoogle from "@/components/auth/continue-with-goole";
 import Link from "next/link";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { signup } from "@/lib/api/auth.api";
+import { extractErrorMessage, setAccessToken } from "@/lib/utils";
+import ErrorAlert from "@/components/alerts/error-alert";
+import { useRouter } from "next/navigation";
+import { UserKeys } from "@/lib/constants/keys/user.key";
+import { ResponseError } from "@/lib/types/error.type";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -26,19 +33,34 @@ const nunito = Nunito({
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
-  // const [errorResponse, setErrorResponse] = useState<string | null>(null);
+  const [errorResponse, setErrorResponse] = useState<string | null>(null);
+
+  const { replace } = useRouter();
+
+  const queryClient = useQueryClient();
 
   const form = useForm<SignupSchemaType>({
     resolver: zodResolver(SignupSchema),
     defaultValues: {
-      fullname: "",
+      name: "",
       email: "",
       password: "",
     },
   });
 
+  const { mutate, isPending } = useMutation({
+    mutationFn: signup,
+    onSuccess: (data) => {
+      setAccessToken(data.data.data.access_token);
+      queryClient.refetchQueries({ queryKey: [UserKeys.GET_USER_PROFILE] });
+      replace("/dashboard");
+    },
+    onError: (err: ResponseError) => setErrorResponse(extractErrorMessage(err)),
+  });
+
   const submit: SubmitHandler<SignupSchemaType> = async (data) => {
-    console.log(data);
+    setErrorResponse(null);
+    mutate(data);
   };
 
   return (
@@ -54,6 +76,8 @@ const Signup = () => {
       >
         <h1 className="text-center font-semibold text-[40px]">Sign Up</h1>
 
+        {errorResponse && <ErrorAlert message={errorResponse} />}
+
         <Form {...form}>
           <form
             className="w-full flex flex-col space-y-5 mt-5"
@@ -61,7 +85,7 @@ const Signup = () => {
           >
             <FormField
               control={form.control}
-              name="fullname"
+              name="name"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="mb-1 font-bold text-base">
@@ -136,7 +160,12 @@ const Signup = () => {
               )}
             />
 
-            <Button type="submit" className="w-full font-bold mt-4.5">
+            <Button
+              type="submit"
+              className="w-full font-bold mt-4.5"
+              isLoading={isPending}
+              disabled={isPending}
+            >
               Create an account
             </Button>
 
