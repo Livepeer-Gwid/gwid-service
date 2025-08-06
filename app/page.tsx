@@ -7,6 +7,7 @@ import Features from "@/components/home/features";
 import EffortlessGatewayOps from "@/components/home/effortless-gateway-ops";
 import Footer from "@/components/home/footer";
 import Image from "next/image";
+import Link from "next/link";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -42,9 +43,11 @@ export default function Home() {
               Build AI inference and video streaming infrastructure that
               auto-scales, <br /> costs less, and launches in one click.
             </p>
-            <Button className="w-fit mx-auto px-5">
-              Get Started <ArrowUpRight size={20} className="ml-2" />
-            </Button>
+            <Link href="/auth/signup" passHref className="w-fit mx-auto">
+              <Button className="w-fit mx-auto px-5">
+                Get Started <ArrowUpRight size={20} className="ml-2" />
+              </Button>
+            </Link>
             <div className="w-3/5 mx-auto">
               <Image
                 width={1000}
@@ -81,11 +84,13 @@ export default function Home() {
                 or Azure account, so you can <br /> rely on the most performant,
                 scalable, and dependable hosting from day 1.
               </p>
-              <Button
-                className={`${nunito.className} w-fit mx-auto px-6 py-8 rounded-[100px] bg-[#FFFFFF26] border-0 text-base font-normal`}
-              >
-                Get Started <ArrowRight size={20} className="ml-3" />
-              </Button>
+              <Link href="/auth/signup" passHref className="w-fit mx-auto">
+                <Button
+                  className={`${nunito.className} w-fit mx-auto px-6 py-8 rounded-[100px] bg-[#FFFFFF26] border-0 text-base font-normal`}
+                >
+                  Get Started <ArrowRight size={20} className="ml-3" />
+                </Button>
+              </Link>
             </div>
           </div>
 
