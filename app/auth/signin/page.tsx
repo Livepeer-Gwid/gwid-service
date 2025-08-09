@@ -5,7 +5,7 @@ import { Nunito } from "next/font/google";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SigninSchema, SigninSchemaType } from "@/lib/schema/signin.schema";
-import { AlertCircle, ArrowUpRight, Eye, EyeOff } from "lucide-react";
+import { ArrowUpRight, Eye, EyeOff } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -18,6 +18,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ContinueWithGoogle from "@/components/auth/continue-with-goole";
 import Link from "next/link";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { login } from "@/lib/api/auth.api";
+import { extractErrorMessage, setAccessToken } from "@/lib/utils";
+import ErrorAlert from "@/components/alerts/error-alert";
+import { UserKeys } from "@/lib/constants/keys/user.key";
+import { useRouter } from "next/navigation";
+import { ResponseError } from "@/lib/types/error.type";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -28,6 +35,10 @@ const Signin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorResponse, setErrorResponse] = useState<string | null>(null);
 
+  const { replace } = useRouter();
+
+  const queryClient = useQueryClient();
+
   const form = useForm<SigninSchemaType>({
     resolver: zodResolver(SigninSchema),
     defaultValues: {
@@ -36,8 +47,19 @@ const Signin = () => {
     },
   });
 
+  const { mutate, isPending } = useMutation({
+    mutationFn: login,
+    onSuccess: (data) => {
+      setAccessToken(data.data.data.access_token);
+      queryClient.refetchQueries({ queryKey: [UserKeys.GET_USER_PROFILE] });
+      replace("/dashboard");
+    },
+    onError: (err: ResponseError) => setErrorResponse(extractErrorMessage(err)),
+  });
+
   const submit: SubmitHandler<SigninSchemaType> = async (data) => {
-    console.log(data);
+    setErrorResponse(null);
+    mutate(data);
   };
 
   return (
@@ -52,6 +74,8 @@ const Signin = () => {
         }}
       >
         <h1 className="text-center font-semibold text-[40px]">Log In</h1>
+
+        {errorResponse && <ErrorAlert message={errorResponse} />}
 
         <Form {...form}>
           <form
@@ -114,7 +138,12 @@ const Signin = () => {
               )}
             />
 
-            <Button type="submit" className="w-full font-bold mt-4.5">
+            <Button
+              type="submit"
+              className="w-full font-bold mt-4.5"
+              isLoading={isPending}
+              disabled={isPending}
+            >
               Continue <ArrowUpRight size={20} className="ml-2" />
             </Button>
 

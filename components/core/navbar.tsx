@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -20,7 +21,9 @@ const Navbar = () => {
   return (
     <nav>
       <div className="flex items-center justify-between space-x-28 border border-[#FFFFFF26] rounded-[20px] bg-[#7876761A] px-5 py-1">
-        <img
+        <Image
+          width={80}
+          height={64}
           src="/images/gwid-logo.svg"
           alt="Gwid Logo"
           className="w-20 h-16"

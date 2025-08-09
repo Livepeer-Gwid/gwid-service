@@ -1,11 +1,14 @@
 import React from "react";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const NoGatewayLaunched = () => {
   return (
     <div className="relative w-full h-full pt-3">
-      <img
+      <Image
+        width={1000}
+        height={1000}
         src="/images/gateway-empty-bg.jpg"
         className="w-full h-full object-cover rotate-180 absolute rounded-[20px]"
         alt="Gateways"

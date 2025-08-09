@@ -1,7 +1,10 @@
+"use client";
+
 import { FC, PropsWithChildren } from "react";
 import Sidebar from "../core/sidebar";
 import { HelpCircle, UserCircle } from "lucide-react";
 import { Nunito } from "next/font/google";
+import { useUser } from "@/lib/hooks/use-user";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -9,6 +12,8 @@ const nunito = Nunito({
 });
 
 const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
+  const { isLoading } = useUser();
+
   return (
     <div className="bg-app-surface h-full flex">
       <Sidebar />
@@ -23,9 +28,11 @@ const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
             <span className={`font-medium ${nunito.className}`}>Account</span>
           </button>
         </div>
-        <main className={`px-10 ${nunito.className} h-full ml-[20%]`}>
-          {children}
-        </main>
+        {!isLoading && (
+          <main className={`px-10 ${nunito.className} h-full ml-[20%]`}>
+            {children}
+          </main>
+        )}
       </div>
     </div>
   );

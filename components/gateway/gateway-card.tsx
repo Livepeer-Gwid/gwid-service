@@ -1,6 +1,7 @@
 import { BadgeCheck, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PanelLeftIcon } from "../icons/panel-left-icon";
+import Image from "next/image";
 
 const GatewayCard = () => {
   return (
@@ -12,7 +13,7 @@ const GatewayCard = () => {
     >
       <div className="flex items-center justify-between mb-5">
         <div className="flex items-center justify-center space-x-2">
-          <img src="/icons/python.svg" alt="Python" className="w-6 h-6" />
+          <Image width={24} height={24} src="/icons/python.svg" alt="Python" />
           <p className="font-semibold text-base">experts-ops01</p>
         </div>
         <BadgeCheck className="w-5 h-5 text-white" />

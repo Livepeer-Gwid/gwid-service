@@ -1,5 +1,6 @@
 import React from "react";
 import { Nunito } from "next/font/google";
+import Image from "next/image";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -60,7 +61,9 @@ const EffortlessGatewayOps = () => {
               "linear-gradient(125deg, #121213 0%, #121213 30%, #616167 100%)",
           }}
         >
-          <img
+          <Image
+            width={1000}
+            height={1000}
             src="/images/feature-mockup.svg"
             className="w-full"
             alt="Dashboard Mockup"
