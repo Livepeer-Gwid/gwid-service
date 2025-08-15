@@ -24,7 +24,7 @@ const Gateways = () => {
     AxiosResponse<GetGatewayResponse>,
     ResponseError
   >({
-    queryKey: [GatewayKeys.GET_GATEWAYS],
+    queryKey: [GatewayKeys.GET_GATEWAYS, page],
     queryFn: () => getUserGateways(page),
   });
 
@@ -84,7 +84,9 @@ const Gateways = () => {
           {!isLoading &&
             isSuccess &&
             data.data.data.length > 0 &&
-            data.data.data.map((gateway) => <GatewayCard key={gateway.id} />)}
+            data.data.data.map((gateway) => (
+              <GatewayCard key={gateway.id} gateway={gateway} />
+            ))}
         </div>
       </div>
     </div>

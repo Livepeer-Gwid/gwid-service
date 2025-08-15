@@ -16,6 +16,14 @@ import DetailsSidebar from "./details-sidebar";
 import { Button } from "../ui/button";
 import { Dispatch, SetStateAction, useEffect } from "react";
 import GatewayConfig from "./gateway-config";
+import { useQuery } from "@tanstack/react-query";
+import { getEC2Instances } from "@/lib/api/ec2.api";
+import { GetEC2InstancesResponse } from "@/lib/types/ec2.type";
+import { ResponseError } from "@/lib/types/error.type";
+import { EC2Keys } from "@/lib/constants/keys/ec2.key";
+import { AxiosResponse } from "axios";
+import Spinner from "../shared/spinner";
+import ErrorAlert from "../alerts/error-alert";
 
 type Props = {
   form: UseFormReturn<SpecifyDetailsSchemaType>;
@@ -24,6 +32,14 @@ type Props = {
 };
 
 const SpecifyDetails = ({ form, selectStackForm, setCurrentStep }: Props) => {
+  const { data, isLoading, isSuccess, isError, error } = useQuery<
+    AxiosResponse<GetEC2InstancesResponse>,
+    ResponseError
+  >({
+    queryKey: [EC2Keys.GET_EC2_INSTANCES],
+    queryFn: () => getEC2Instances(),
+  });
+
   useEffect(() => {
     window.scrollTo({ top: 0 });
   }, []);
@@ -148,7 +164,20 @@ const SpecifyDetails = ({ form, selectStackForm, setCurrentStep }: Props) => {
           </div>
 
           {/* Configurations */}
-          <GatewayConfig form={form} />
+          {!isLoading && isSuccess && (
+            <GatewayConfig form={form} data={data.data.data} />
+          )}
+
+          {isLoading && (
+            <div className="flex items-center justify-center relative py-7">
+              <Spinner size={30} className="text-white" />
+            </div>
+          )}
+
+          {isError && error && (
+            <ErrorAlert message={error?.response?.data?.error ?? ""} />
+          )}
+          {/* End of Configurations */}
 
           <Button
             variant="outline"
@@ -161,10 +190,18 @@ const SpecifyDetails = ({ form, selectStackForm, setCurrentStep }: Props) => {
 
         {/* Right Side */}
         <div className="md:col-span-1">
-          <DetailsSidebar
-            selectStackForm={selectStackForm}
-            specifyDetailsForm={form}
-          />
+          {isLoading && (
+            <div className="flex items-center justify-center relative top-32">
+              <Spinner size={30} className="text-white" />
+            </div>
+          )}
+          {!isLoading && isSuccess && (
+            <DetailsSidebar
+              selectStackForm={selectStackForm}
+              specifyDetailsForm={form}
+              data={data.data.data}
+            />
+          )}
         </div>
       </form>
     </Form>

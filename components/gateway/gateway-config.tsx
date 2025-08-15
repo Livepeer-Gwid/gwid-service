@@ -1,37 +1,21 @@
-"use client";
-
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { Check, Cpu } from "lucide-react";
 import Image from "next/image";
 import { SpecifyDetailsSchemaType } from "@/lib/schema/specify-details.schema";
 import { UseFormReturn } from "react-hook-form";
-import { useQuery } from "@tanstack/react-query";
-import { getEC2Instances } from "@/lib/api/ec2.api";
-import { GetEC2InstancesResponse } from "@/lib/types/ec2.type";
-import { ResponseError } from "@/lib/types/error.type";
-import { EC2Keys } from "@/lib/constants/keys/ec2.key";
-import { AxiosResponse } from "axios";
 import { useMemo } from "react";
-import Spinner from "../shared/spinner";
-import ErrorAlert from "../alerts/error-alert";
+import { EC2Instance } from "@/lib/types/ec2.type";
 
 type Props = {
   form: UseFormReturn<SpecifyDetailsSchemaType>;
+  data: EC2Instance[];
 };
 
-const GatewayConfig = ({ form }: Props) => {
-  const { data, isLoading, isSuccess, isError, error } = useQuery<
-    AxiosResponse<GetEC2InstancesResponse>,
-    ResponseError
-  >({
-    queryKey: [EC2Keys.GET_EC2_INSTANCES],
-    queryFn: () => getEC2Instances(),
-  });
-
+const GatewayConfig = ({ form, data }: Props) => {
   const ec2s = useMemo(() => {
-    return data
-      ? data.data.data.filter((processor) =>
+    return data.length > 0
+      ? data.filter((processor) =>
           processor.cpu_manufacturer.includes(
             form.watch("processor").split(" ")[0]
           )
@@ -65,9 +49,7 @@ const GatewayConfig = ({ form }: Props) => {
           </div>
 
           <div className="space-y-5 mt-4">
-            {!isLoading &&
-              isSuccess &&
-              ec2s.length > 0 &&
+            {ec2s.length > 0 &&
               ec2s.map((plan) => (
                 <div
                   key={plan.id}
@@ -130,16 +112,6 @@ const GatewayConfig = ({ form }: Props) => {
                   </div>
                 </div>
               ))}
-
-            {isLoading && (
-              <div className="flex items-center justify-center py-2">
-                <Spinner size={30} />
-              </div>
-            )}
-
-            {isError && error && (
-              <ErrorAlert message={error?.response?.data?.error ?? ""} />
-            )}
           </div>
         </Tabs>
       </div>
