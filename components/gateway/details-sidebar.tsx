@@ -8,19 +8,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { plans } from "@/lib/constants/plans";
 import { ArrowRight, Cpu } from "lucide-react";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { EC2Instance } from "@/lib/types/ec2.type";
 
 type Props = {
   specifyDetailsForm: UseFormReturn<SpecifyDetailsSchemaType>;
   selectStackForm: UseFormReturn<StackSchemType>;
+  data: EC2Instance[];
 };
 
-const DetailsSidebar = ({ specifyDetailsForm, selectStackForm }: Props) => {
-  const plan = plans.find(
-    (plan) => plan.label === specifyDetailsForm.watch("plan")
+const DetailsSidebar = ({
+  specifyDetailsForm,
+  selectStackForm,
+  data,
+}: Props) => {
+  const plan = data.find(
+    (plan) => plan.id === specifyDetailsForm.watch("ec2_instance_type_id")
   );
 
   const onSubmit = (values: SpecifyDetailsSchemaType) => {
@@ -77,7 +82,7 @@ const DetailsSidebar = ({ specifyDetailsForm, selectStackForm }: Props) => {
       <div className="space-y-2">
         <div className="text-sm text-[#FFFFFFB2] font-semibold">Plan</div>
         <div className="text-white text-xl font-bold capitalize">
-          {specifyDetailsForm.watch("plan")}
+          {plan?.tag}
         </div>
         <div className="flex flex-col space-y-3">
           <p className="text-xs text-[#FFFFFFB2] flex items-center">
@@ -93,7 +98,7 @@ const DetailsSidebar = ({ specifyDetailsForm, selectStackForm }: Props) => {
             />{" "}
             {plan?.ram}
           </p>
-          <p className="text-xs text-[#FFFFFFB2] flex items-center">
+          {/* <p className="text-xs text-[#FFFFFFB2] flex items-center">
             <Image
               width={20}
               height={20}
@@ -102,8 +107,8 @@ const DetailsSidebar = ({ specifyDetailsForm, selectStackForm }: Props) => {
               src="/icons/ram.svg"
             />{" "}
             {plan?.storage}
-          </p>
-          <p className="text-xs text-[#FFFFFFB2] flex items-center">
+          </p> */}
+          {/* <p className="text-xs text-[#FFFFFFB2] flex items-center">
             <Image
               width={20}
               height={20}
@@ -112,7 +117,7 @@ const DetailsSidebar = ({ specifyDetailsForm, selectStackForm }: Props) => {
               src="/icons/bandwidth.svg"
             />{" "}
             {plan?.bandwidth}
-          </p>
+          </p> */}
           <p className="text-xs text-[#FFFFFFB2] flex items-center">
             <Cpu className="mr-2" size={20} />
             {specifyDetailsForm.watch("processor")}

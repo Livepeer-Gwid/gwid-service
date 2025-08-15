@@ -5,7 +5,7 @@ export const specifyDetailsSchema = z.object({
   password: z.string().min(6, "Password too short"),
   confirmPassword: z.string().min(6),
   transcodingProfile: z.enum(["480p0", "720p0", "1080p0"]),
-  plan: z.string(),
+  ec2_instance_type_id: z.string(),
   processor: z.string(),
   version: z.string(),
 });
