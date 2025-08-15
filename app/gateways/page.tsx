@@ -1,12 +1,33 @@
-import React from "react";
+"use client";
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { List, LayoutGrid, Plus } from "lucide-react";
 import SearchGateway from "@/components/gateway/search-gateway";
 import GatewayCard from "@/components/gateway/gateway-card";
 import Image from "next/image";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
+import { GatewayKeys } from "@/lib/constants/keys/gateway.key";
+import { getUserGateways } from "@/lib/api/gateway.api";
+import { AxiosResponse } from "axios";
+import { GetGatewayResponse } from "@/lib/types/gateway.type";
+import { ResponseError } from "@/lib/types/error.type";
+import ErrorAlert from "@/components/alerts/error-alert";
+import Spinner from "@/components/shared/spinner";
+import NoGatewayLaunched from "@/components/gateway/no-gateway-launched";
 
 const Gateways = () => {
+  const [page] = useState(1);
+
+  const { data, isLoading, isSuccess, isError, error } = useQuery<
+    AxiosResponse<GetGatewayResponse>,
+    ResponseError
+  >({
+    queryKey: [GatewayKeys.GET_GATEWAYS],
+    queryFn: () => getUserGateways(page),
+  });
+
   return (
     <div className="w-full flex flex-col space-y-9">
       <div className="flex items-center space-x-4">
@@ -47,10 +68,23 @@ const Gateways = () => {
           </Link>
         </div>
 
+        {isLoading && (
+          <div className="flex items-center justify-center relative top-32">
+            <Spinner size={35} className="text-white" />
+          </div>
+        )}
+
+        {isError && <ErrorAlert message={error?.response?.data?.error ?? ""} />}
+
+        {!isLoading && isSuccess && data.data.data.length === 0 && (
+          <NoGatewayLaunched />
+        )}
+
         <div className="w-full grid grid-cols-3 gap-6 pb-7">
-          {[...Array(10)].map((_, i) => (
-            <GatewayCard key={i} />
-          ))}
+          {!isLoading &&
+            isSuccess &&
+            data.data.data.length > 0 &&
+            data.data.data.map((gateway) => <GatewayCard key={gateway.id} />)}
         </div>
       </div>
     </div>

@@ -2,10 +2,11 @@ import React from "react";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const NoGatewayLaunched = () => {
   return (
-    <div className="relative w-full h-full pt-3">
+    <div className="relative w-full h-full pt-2">
       <Image
         width={1000}
         height={1000}
@@ -24,12 +25,14 @@ const NoGatewayLaunched = () => {
           </p>
         </div>
 
-        <Button
-          variant="outline"
-          className="bg-inherit text-white font-semibold rounded-[30px] border-[#3A3C41] w-fit h-10 px-5"
-        >
-          Launch a new gateway <ArrowRight size={18} className="ml-2" />
-        </Button>
+        <Link href="auth/gateway" passHref>
+          <Button
+            variant="outline"
+            className="bg-inherit text-white font-semibold rounded-[30px] border-[#3A3C41] w-fit h-10 px-5"
+          >
+            Launch a new gateway <ArrowRight size={18} className="ml-2" />
+          </Button>
+        </Link>
       </div>
     </div>
   );

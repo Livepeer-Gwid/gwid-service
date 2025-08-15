@@ -31,7 +31,7 @@ const Launch = () => {
     defaultValues: {
       rpcUrl: "",
       transcodingProfile: "480p0",
-      plan: "MEDIUM-2C-4G",
+      ec2_instance_type_id: "",
       processor: "Intel Xeon",
       confirmPassword: "",
       password: "",

@@ -1,0 +1,3 @@
+export enum EC2Keys {
+  GET_EC2_INSTANCES = "GET_EC2_INSTANCES",
+}
