@@ -1,15 +1,17 @@
-import React from "react";
+"use client";
+
+import * as React from "react";
 
 type Props = {
-  params: {
+  params: Promise<{
     gateway: string;
-  };
+  }>;
 };
 
-const Gateway = ({ params }: Props) => {
-  return (
-    <div className="text-white">This is the Gateway ID {params.gateway}</div>
-  );
+const Page = ({ params }: Props) => {
+  const { gateway } = React.use(params);
+
+  return <div className="text-white">This is the Gateway ID {gateway}</div>;
 };
 
-export default Gateway;
+export default Page;

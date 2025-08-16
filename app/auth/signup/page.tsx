@@ -33,7 +33,7 @@ const nunito = Nunito({
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
-  // const [errorResponse, setErrorResponse] = useState<string | null>(null);
+  const [errorResponse, setErrorResponse] = useState<string | null>(null);
 
   const { replace } = useRouter();
 

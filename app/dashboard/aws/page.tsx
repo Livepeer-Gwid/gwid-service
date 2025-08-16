@@ -20,20 +20,43 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { AxiosResponse } from "axios";
+import { ResponseError } from "@/lib/types/error.type";
+import { addAWSCredentials } from "@/lib/api/credentials.api";
+import { GetAWSCredentialsResponse } from "@/lib/types/aws-credentials.type";
+import { GlobalKeys } from "@/lib/constants/keys";
+import ErrorAlert from "@/components/alerts/error-alert";
+import { toast } from "sonner";
 
 const AWS = () => {
   const [step, setStep] = useState(1);
-
   const form = useForm<AwsCredentialsSchemaType>({
     resolver: zodResolver(awsCredentialsSchema),
     defaultValues: {
-      access_key: "",
-      secret_key: "",
+      access_key_id: "",
+      secret_access_key: "",
+    },
+  });
+
+  const queryClient = useQueryClient();
+
+  const { mutate, isPending, isError, error } = useMutation<
+    AxiosResponse<GetAWSCredentialsResponse>,
+    ResponseError,
+    AwsCredentialsSchemaType
+  >({
+    mutationFn: addAWSCredentials,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [GlobalKeys.GET_AWS_CREDENTIALS],
+      });
+      toast("AWS credentials added successfully");
     },
   });
 
   const submit: SubmitHandler<AwsCredentialsSchemaType> = async (data) => {
-    console.log(data);
+    mutate(data);
   };
 
   return (
@@ -84,7 +107,11 @@ const AWS = () => {
                       height={16}
                       alt="AWS"
                     />
-                    <a href="#" target="_blank" rel="noreferrer">
+                    <a
+                      href="https://aws.amazon.com/secrets-manager/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <Button className="bg-[#FFFFFF1A] border-2 border-[#3A3C41] px-10">
                         Log in <ExternalLink size={18} className="ml-2" />
                       </Button>
@@ -149,9 +176,15 @@ const AWS = () => {
                     className="flex flex-col space-y-5 max-w-md"
                     onSubmit={form.handleSubmit(submit)}
                   >
+                    {isError && error && (
+                      <ErrorAlert
+                        message={error?.response?.data?.error ?? ""}
+                      />
+                    )}
+
                     <FormField
                       control={form.control}
-                      name="access_key"
+                      name="access_key_id"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="mb-1 font-semibold text-base text-white">
@@ -171,7 +204,7 @@ const AWS = () => {
 
                     <FormField
                       control={form.control}
-                      name="secret_key"
+                      name="secret_access_key"
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel className="mb-1 font-semibold text-base text-white">
@@ -201,6 +234,8 @@ const AWS = () => {
                       <Button
                         type="submit"
                         className="bg-[#25213D] border-[#3A3C41] w-fit"
+                        isLoading={isPending}
+                        disabled={isPending}
                       >
                         Continue <ArrowRight size={18} className="ml-2" />
                       </Button>
