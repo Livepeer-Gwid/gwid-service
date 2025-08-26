@@ -33,3 +33,11 @@ export const extractErrorMessage = (err: ResponseError): string => {
     return "Something went wrong. Please try again later.";
   }
 };
+
+export const addGatewayNameToSession = (name: string) => {
+  return sessionStorage.setItem("gatewayName", name);
+};
+
+export const getGatewayNameFromSession = () => {
+  return sessionStorage.getItem("gatewayName");
+};

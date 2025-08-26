@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { addGatewayNameToSession } from "@/lib/utils";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -35,7 +36,8 @@ const CreateGateway = () => {
     },
   });
 
-  const submit: SubmitHandler<NewGatewaySchemaType> = async () => {
+  const submit: SubmitHandler<NewGatewaySchemaType> = async (data) => {
+    addGatewayNameToSession(data.name);
     replace("/gateways/launch");
   };
 

@@ -23,6 +23,7 @@ const Launch = () => {
       stackType: "transcoding",
       cloudProvider: "dedicated",
       region: "amsterdam",
+      credentials_id: "",
     },
   });
 

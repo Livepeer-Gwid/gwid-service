@@ -22,6 +22,7 @@ import ErrorAlert from "../alerts/error-alert";
 import { ResponseError } from "@/lib/types/error.type";
 import { GetRegionResponse } from "@/lib/types/region.type";
 import { AxiosResponse } from "axios";
+import SelectCredentials from "../select-credentials";
 
 type Props = {
   form: UseFormReturn<StackSchemType>;
@@ -39,6 +40,7 @@ const SelectStackForm = ({ form, setCurrentStep }: Props) => {
   >({
     queryKey: [RegionKeys.GET_REGIONS],
     queryFn: getAWSRegions,
+    enabled: !!form.watch("credentials_id"),
   });
 
   useEffect(() => {
@@ -196,6 +198,9 @@ const SelectStackForm = ({ form, setCurrentStep }: Props) => {
             )}
           />
         </div>
+
+        {/* AWS Credentials */}
+        <SelectCredentials form={form} />
 
         {/* Region */}
         {isLoading && (

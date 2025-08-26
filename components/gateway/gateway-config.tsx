@@ -13,15 +13,19 @@ type Props = {
 };
 
 const GatewayConfig = ({ form, data }: Props) => {
+  const selectedProcessor = form.watch("processor");
+
   const ec2s = useMemo(() => {
-    return data.length > 0
-      ? data.filter((processor) =>
-          processor.cpu_manufacturer.includes(
-            form.watch("processor").split(" ")[0]
-          )
-        )
-      : [];
-  }, [data, form]);
+    if (!data) return [];
+
+    return data.filter((processor) =>
+      processor.cpu_manufacturer
+        .toLowerCase()
+        .includes(selectedProcessor?.toLowerCase() ?? "")
+    );
+  }, [data, selectedProcessor]);
+
+  console.log("ec2s", ec2s);
 
   return (
     <div className="flex flex-col space-y-3 mt-6">
@@ -35,7 +39,7 @@ const GatewayConfig = ({ form, data }: Props) => {
         <Tabs defaultValue="Intel Xeon">
           <div className="flex justify-center">
             <TabsList className="grid grid-cols-3 bg-[#171B2080] text-white border-[1.5px] border-[#383A3F] rounded-[10px] h-fit">
-              {["Intel Xeon", "Ampere Altra", "AMD Epyc"].map((cpu) => (
+              {["Intel", "Ultra", "AMD"].map((cpu) => (
                 <TabsTrigger
                   key={cpu}
                   value={cpu}

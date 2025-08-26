@@ -20,3 +20,8 @@ export type GetGatewayResponse = {
   data: Gateway[];
   metadata: Meta;
 };
+
+export type CreateGatewayResponse = {
+  data: Gateway;
+  success: boolean;
+};
