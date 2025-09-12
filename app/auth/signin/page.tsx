@@ -23,7 +23,7 @@ import { login } from "@/lib/api/auth.api";
 import { extractErrorMessage, setAccessToken } from "@/lib/utils";
 import ErrorAlert from "@/components/alerts/error-alert";
 import { UserKeys } from "@/lib/constants/keys/user.key";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { ResponseError } from "@/lib/types/error.type";
 
 const nunito = Nunito({
@@ -34,6 +34,8 @@ const nunito = Nunito({
 const Signin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorResponse, setErrorResponse] = useState<string | null>(null);
+
+  const searchParams = useSearchParams();
 
   const { replace } = useRouter();
 
@@ -50,9 +52,14 @@ const Signin = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: login,
     onSuccess: (data) => {
+      const redirect = searchParams.get("redirect");
       setAccessToken(data.data.data.access_token);
       queryClient.refetchQueries({ queryKey: [UserKeys.GET_USER_PROFILE] });
-      replace("/dashboard");
+      if (redirect) {
+        replace(redirect);
+      } else {
+        replace("/dashboard");
+      }
     },
     onError: (err: ResponseError) => setErrorResponse(extractErrorMessage(err)),
   });

@@ -35,7 +35,7 @@ api.interceptors.response.use(
 
     if (status === 401 && !AUTH_EXEMPT_ROUTES.includes(currentPath)) {
       removeAccessToken();
-      window.location.href = "/auth/signin";
+      window.location.href = `/auth/signin?redirect=${currentPath}`;
     }
 
     return Promise.reject(error);
