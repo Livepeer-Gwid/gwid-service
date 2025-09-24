@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import { Link as ScrollLink } from "react-scroll";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { Link as ScrollLink } from "react-scroll";
 
 const navLinks = [
   { name: "Home", href: "home" },

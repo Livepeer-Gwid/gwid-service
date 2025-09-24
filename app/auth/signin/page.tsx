@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Nunito } from "next/font/google";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -168,4 +168,12 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+const SigninPage = () => {
+  return (
+    <Suspense>
+      <Signin />
+    </Suspense>
+  );
+};
+
+export default SigninPage;
