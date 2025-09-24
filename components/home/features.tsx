@@ -26,7 +26,7 @@ const features = [
 
 const Features = () => {
   return (
-    <div className="container flex flex-col space-y-16">
+    <div className="container flex flex-col space-y-16" id="features">
       <div className="flex flex-col text-white">
         <p className={`${nunito.className} text-sm flex items-center`}>
           <strong className="text-6xl inline pb-7.5 pr-1">.</strong>

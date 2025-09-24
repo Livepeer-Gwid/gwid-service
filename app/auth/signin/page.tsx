@@ -16,7 +16,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import ContinueWithGoogle from "@/components/auth/continue-with-goole";
 import Link from "next/link";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { login } from "@/lib/api/auth.api";
@@ -154,15 +153,7 @@ const Signin = () => {
               Continue <ArrowUpRight size={20} className="ml-2" />
             </Button>
 
-            <div className="flex flex-col space-y-1 mt-2">
-              <div className="flex items-center w-full space-x-4 whitespace-nowrap">
-                <hr className="w-full border-white" />
-                <p className="font-semibold">Or continue with</p>
-                <hr className="w-full border-white" />
-              </div>
-
-              <ContinueWithGoogle />
-
+            <div className="flex flex-col space-y-1">
               <p className="font-medium text-center mt-6">
                 Don&apos;t have an account?{" "}
                 <Link href="/auth/signup" className="font-bold">

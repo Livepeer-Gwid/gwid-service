@@ -1,17 +1,20 @@
 import { ReactNode } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const AuthLayout = ({ children }: { children: ReactNode }) => {
   return (
     <main>
       <div className="flex flex-col min-h-screen h-screen relative overflow-x-hidden no-scrollbar">
         <div className="container py-5">
-          <Image
-            width={80}
-            height={64}
-            src="/images/gwid-logo.svg"
-            alt="Gwid"
-          />
+          <Link href="/" passHref>
+            <Image
+              width={80}
+              height={64}
+              src="/images/gwid-logo.svg"
+              alt="Gwid"
+            />
+          </Link>
         </div>
 
         <div className="absolute top-20 inset-x-0 bottom-0 bg-black/50 z-[-9] h-full scale-110" />

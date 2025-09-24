@@ -26,13 +26,16 @@ export default function Home() {
           alt="Gwid Hero Section"
         />
 
-        <div className="w-full fixed">
+        <div className="w-full fixed z-50">
           <div className="w-fit mx-auto py-5">
             <Navbar />
           </div>
         </div>
 
-        <div className="flex flex-col h-full pt-60 justify-center items-center">
+        <div
+          className="flex flex-col h-full pt-60 justify-center items-center"
+          id="home"
+        >
           <div className="container flex flex-col space-y-10">
             <h2 className="text-[55px] font-medium text-center fade-text">
               Revolutionizing Gateway <br /> Deployment with Livepeer.
@@ -98,7 +101,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+      <section id="how-it-works">
         <div
           className="w-full h-full rounded-[50px] py-20 mt-10 flex flex-col space-y-20"
           style={{
@@ -110,14 +113,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
+      <section id="fund-a-gateway">
         <div className="container flex flex-col space-y-10 mt-56">
           <h1 className="text-5xl text-white text-center leading-16">
             Reinvent media — without the <br /> massive price tag.
           </h1>
-          <Button className="w-fit mx-auto px-5">
-            Launch Gateway <ArrowUpRight size={20} className="ml-2" />
-          </Button>
+          <Link href="/auth/signup" passHref className="mx-auto ">
+            <Button className="w-fit px-5">
+              Launch Gateway <ArrowUpRight size={20} className="ml-2" />
+            </Button>
+          </Link>
         </div>
       </section>
 
@@ -140,7 +145,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer>
+      <footer id="blog">
         <div className="bg-[#0C0C0D] py-3 w-full">
           <Footer />
         </div>
