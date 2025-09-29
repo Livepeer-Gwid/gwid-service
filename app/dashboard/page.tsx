@@ -42,12 +42,14 @@ const Home = () => {
           description="Host in your own cloud"
           img="/icons/gwid-azure.svg"
           service="azure"
+          disabled
         />
         <ServiceCard
           name="Google Cloud Platform"
           description="Host in your own cloud"
           img="/icons/gwid-gcp.svg"
           service="gcp"
+          disabled
         />
       </div>
 

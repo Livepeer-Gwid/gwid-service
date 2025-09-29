@@ -2,14 +2,7 @@
 
 import { FC } from "react";
 import { Button } from "../ui/button";
-import {
-  ChevronRight,
-  LayoutDashboard,
-  Home,
-  Settings,
-  Layers,
-  BriefcaseBusiness,
-} from "lucide-react";
+import { ChevronRight, LayoutDashboard, Home, Settings } from "lucide-react";
 import { Nunito } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -25,8 +18,6 @@ const nunito = Nunito({
 const navItems = [
   { label: "Home", href: "/dashboard", icon: Home },
   { label: "Gateways", href: "/gateways", icon: GatewayIcon },
-  { label: "Add-ons", href: "/addons", icon: Layers },
-  { label: "Projects", href: "/projects", icon: BriefcaseBusiness },
   { label: "Settings", href: "/settings", icon: Settings },
 ];
 

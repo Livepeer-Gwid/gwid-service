@@ -10,9 +10,10 @@ type Props = {
   name: string;
   description: string;
   service: string;
+  disabled?: boolean;
 };
 
-const ServiceCard = ({ img, name, description, service }: Props) => {
+const ServiceCard = ({ img, name, description, service, disabled }: Props) => {
   const aws = useDisclosure();
   const azure = useDisclosure();
   const gcp = useDisclosure();
@@ -35,19 +36,20 @@ const ServiceCard = ({ img, name, description, service }: Props) => {
 
   return (
     <>
-      <div
-        className="flex flex-col items-center justify-center space-y-5 rounded-[10px] border-[1.5px] border-[#383A3F] px-4 py-10 w-full self-stretch hover:-translate-y-2 transition-all duration-300 cursor-pointer"
+      <button
+        className="flex flex-col items-center justify-center space-y-5 rounded-[10px] border-[1.5px] border-[#383A3F] px-4 py-10 w-full self-stretch hover:-translate-y-2 transition-all duration-300 cursor-pointer disabled:blur-[5px] disabled:cursor-not-allowed disabled:pointer-events-none"
         style={{
           background: "linear-gradient(to bottom, #171B20, #121213)",
         }}
         onClick={handleClick}
+        disabled={disabled}
       >
         <Image src={img} width={45} height={45} alt={name} />
         <p className="font-semibold text-[#FFFFFF]">{name}</p>
         <p className="text-[#FFFFFF80] text-xs font-medium leading-0">
           {description}
         </p>
-      </div>
+      </button>
 
       <AwsCostConsent open={aws.open} onClose={aws.onClose} />
     </>
