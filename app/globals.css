@@ -124,7 +124,7 @@
 }
 
 .bg-radial-gradient {
-  background: radial-gradient(circle at bottom right, #a0b3f7, #6c5ce7);
+  background: linear-gradient(to bottom, #6c5ce7, #a0b3f7 130%);
 }
 
 .fade-text {

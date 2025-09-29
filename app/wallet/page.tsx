@@ -3,8 +3,15 @@
 import { Button } from "@/components/ui/button";
 import WalletBtn from "@/components/wallet/wallet-btn";
 import Image from "next/image";
+import useWeb3Provider from "@/lib/hooks/use-web3";
+import useDisclosure from "@/lib/hooks/use-disclosure";
+import FundGateway from "@/components/dialogs/fund-gateway";
 
 const Wallet = () => {
+  const { connectWallet } = useWeb3Provider();
+
+  const fundGateway = useDisclosure();
+
   return (
     <div className="w-full flex flex-col space-y-16">
       <div className="flex flex-col space-y-3">
@@ -33,7 +40,7 @@ const Wallet = () => {
               />
             }
             name="Fund Gateway"
-            onClick={() => console.log("Fund Gateway")}
+            onClick={fundGateway.onOpen}
           />
           <WalletBtn
             icon={
@@ -73,7 +80,7 @@ const Wallet = () => {
           />
         </div>
 
-        <Button className="w-fit">
+        <Button className="w-fit" onClick={connectWallet}>
           <Image
             src="/icons/connect-wallet.svg"
             alt="Connect Wallet"
@@ -84,6 +91,8 @@ const Wallet = () => {
           Connect Wallet
         </Button>
       </div>
+
+      <FundGateway open={fundGateway.open} onClose={fundGateway.onClose} />
     </div>
   );
 };
