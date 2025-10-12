@@ -12,7 +12,7 @@ const navLinks = [
   { name: "Home", href: "home" },
   { name: "Features", href: "features" },
   { name: "How it works", href: "how-it-works" },
-  { name: "Fund a gateway", href: "fund-a-gateway" },
+  { name: "Fund a gateway", href: "/fund~" },
   { name: "Blog", href: "blog" },
 ];
 
@@ -51,22 +51,33 @@ const Navbar = () => {
               className={`${active === link.href ? "bg-gradient-to-b" : "inherit"} from-[#fff] to-[#3A3C41] p-[1.1px] rounded-[15px] transition-all duration-300 ease-in-out`}
               key={index}
             >
-              <ScrollLink
-                activeClass="active"
-                to={link.href}
-                spy={true}
-                smooth={true}
-                offset={-120}
-                duration={500}
-                onSetActive={() => setActive(link.href)}
-              >
-                <Button
-                  variant="link"
-                  className={`hover:no-underline hover:bg-[#171B21] text-white rounded-[15px] font-medium ${active === link.href ? "bg-[#171B21]" : "bg-transparent"}`}
+              {link.href === "/fund~" ? (
+                <Link href="/fund~" passHref>
+                  <Button
+                    variant="link"
+                    className={`hover:no-underline hover:bg-[#171B21] text-white rounded-[15px] font-medium ${active === link.href ? "bg-[#171B21]" : "bg-transparent"}`}
+                  >
+                    {link.name}
+                  </Button>
+                </Link>
+              ) : (
+                <ScrollLink
+                  activeClass="active"
+                  to={link.href}
+                  spy={true}
+                  smooth={true}
+                  offset={-120}
+                  duration={500}
+                  onSetActive={() => setActive(link.href)}
                 >
-                  {link.name}
-                </Button>
-              </ScrollLink>
+                  <Button
+                    variant="link"
+                    className={`hover:no-underline hover:bg-[#171B21] text-white rounded-[15px] font-medium ${active === link.href ? "bg-[#171B21]" : "bg-transparent"}`}
+                  >
+                    {link.name}
+                  </Button>
+                </ScrollLink>
+              )}
             </div>
           ))}
         </div>
