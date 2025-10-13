@@ -12,6 +12,6 @@ interface EthereumProvider {
     method: string;
     params?: unknown[] | object;
   }) => Promise<unknown>;
-  on: (event: string, handler: (...args: any[]) => void) => void;
+  on: (event: string, handler: (...args) => void) => void;
   removeAllListeners: () => void;
 }

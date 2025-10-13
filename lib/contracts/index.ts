@@ -7,7 +7,7 @@ import { FundGatewaySchemaType } from "../schema/fund-gateway.schema";
 // Proxy contract address
 const proxyAddress = "0xa8bB618B1520E284046F3dFc448851A1Ff26e41B";
 
-const { ethereum } = window;
+const ethereum = typeof window !== "undefined" ? window.ethereum : undefined;
 
 // Initialize provider and signer lazily (to avoid immediate execution)
 let provider: BrowserProvider | null = null;

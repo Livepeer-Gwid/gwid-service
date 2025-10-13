@@ -1,3 +1,5 @@
+"use client";
+
 import { BrowserProvider, JsonRpcSigner } from "ethers";
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -10,7 +12,7 @@ export interface IWeb3State {
   isAuthenticated: boolean;
 }
 
-const { ethereum } = window;
+const ethereum = typeof window !== "undefined" ? window.ethereum : undefined;
 
 const useWeb3Provider = () => {
   const initialWeb3State: IWeb3State = {
