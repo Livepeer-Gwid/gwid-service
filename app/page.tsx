@@ -8,6 +8,7 @@ import EffortlessGatewayOps from "@/components/home/effortless-gateway-ops";
 import Footer from "@/components/home/footer";
 import Image from "next/image";
 import Link from "next/link";
+import MobileNavbar from "@/components/core/mobile-navbar";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -26,11 +27,15 @@ export default function Home() {
           alt="Gwid Hero Section"
         />
 
-        <div className="w-full fixed z-50">
+        {/* Desktop Nav */}
+        <div className="w-full fixed z-50 hidden lg:block">
           <div className="w-fit mx-auto py-5">
             <Navbar />
           </div>
         </div>
+
+        {/* Mobile Nav */}
+        <MobileNavbar />
 
         <div
           className="flex flex-col h-full pt-60 justify-center items-center"
