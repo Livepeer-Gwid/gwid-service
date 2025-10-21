@@ -10,13 +10,13 @@ const nunito = Nunito({
 const EffortlessGatewayOps = () => {
   return (
     <div className="container">
-      <div className="flex items-center space-x-10">
+      <div className="flex items-center lg:space-x-10">
         <div className="flex flex-col space-y-10">
-          <h1 className="text-[40px] font-semibold leading-[43.2px] text-white">
+          <h1 className="md:text-[40px] text-3xl font-semibold leading-[43.2px] text-white">
             Effortless gateway ops for Livepeer builders.
           </h1>
 
-          <div className="flex flex-col border-b-2 border-white pb-7 w-11/12">
+          <div className="flex flex-col border-b-2 border-white pb-7 lg:w-11/12 w-full">
             <p
               className={`${nunito.className} text-white font-semibold text-2xl`}
             >
@@ -24,7 +24,7 @@ const EffortlessGatewayOps = () => {
             </p>
           </div>
 
-          <div className="flex flex-col border-b-2 border-white pb-7 space-y-5 w-11/12">
+          <div className="flex flex-col border-b-2 border-white pb-7 md:space-y-5 space-y-3 lg:w-11/12 w-full">
             <p
               className={`${nunito.className} text-white font-semibold text-2xl`}
             >
@@ -37,7 +37,7 @@ const EffortlessGatewayOps = () => {
             </p>
           </div>
 
-          <div className="flex flex-col border-b-2 border-white pb-7 w-11/12">
+          <div className="flex flex-col border-b-2 border-white pb-7 lg:w-11/12 w-full">
             <p
               className={`${nunito.className} text-white font-semibold text-2xl`}
             >
@@ -45,7 +45,7 @@ const EffortlessGatewayOps = () => {
             </p>
           </div>
 
-          <div className="flex flex-col border-b-2 border-white pb-7 w-11/12">
+          <div className="flex flex-col border-b-2 border-white pb-7 lg:w-11/12 w-full">
             <p
               className={`${nunito.className} text-white font-semibold text-2xl`}
             >
@@ -55,7 +55,7 @@ const EffortlessGatewayOps = () => {
         </div>
 
         <div
-          className="w-full h-[743px] rounded-[20px] flex items-center justify-center px-8"
+          className="w-full h-[743px] rounded-[20px] lg:flex items-center justify-center px-8 hidden"
           style={{
             backgroundImage:
               "linear-gradient(125deg, #121213 0%, #121213 30%, #616167 100%)",

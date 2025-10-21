@@ -19,13 +19,13 @@ const Footer = () => {
 
       <hr className="border-white opacity-20 w-full" />
 
-      <div className="flex grow items-start justify-between space-x-10 text-white mt-5">
+      <div className="flex md:flex-row flex-col grow items-start justify-between md:space-x-10 space-y-7 md:space-y-0 text-white mt-5">
         <div className="flex flex-col space-y-5 relative self-stretch">
           <p className="text-sm font-medium text-left">Address</p>
-          <p className="text-sm text-left text-gray-400 w-[250px]">
+          <p className="text-sm text-left text-gray-400 w-[250px] md:leading-normal leading-6">
             2972 Westheimer Rd. Santa Ana, Illinois 85486
           </p>
-          <p className="text-xs absolute bottom-0 left-0 text-gray-500">
+          <p className="text-xs absolute md:bottom-0 -bottom-1 left-0 text-gray-500">
             &copy; 2025 — Copyright
           </p>
         </div>

@@ -26,29 +26,35 @@ const features = [
 
 const Features = () => {
   return (
-    <div className="container flex flex-col space-y-16" id="features">
+    <div
+      className="container flex flex-col md:space-y-16 space-y-10"
+      id="features"
+    >
       <div className="flex flex-col text-white">
         <p className={`${nunito.className} text-sm flex items-center`}>
           <strong className="text-6xl inline pb-7.5 pr-1">.</strong>
           Features
         </p>
 
-        <div className="flex items-center justify-between relative -top-4">
+        <div className="flex lg:flex-row flex-col lg:items-center justify-between relative -top-4 space-y-4 lg:space-y-0">
           <h1
-            className={`${nunito.className} text-[40px] font-semibold features-fade-text`}
+            className={`${nunito.className} md:text-[40px] text-2xl font-semibold features-fade-text md:leading-[50px] lg:leading-normal leading-9`}
           >
             Essential Features for Smart <br /> Gateway Deployments
           </h1>
           <p
-            className={`${nunito.className} font-medium text-white leading-7 text-left`}
+            className={`${nunito.className} font-medium text-sm md:text-base text-white leading-7 text-left`}
           >
-            GWID gives you everything you need to deploy and manage <br /> your
-            Livepeer gateway. From setup to scaling, it&aops;s all seamless.
+            GWID gives you everything you need to deploy and manage{" "}
+            <br className="hidden md:block" /> your Livepeer gateway. From setup
+            to scaling, it&apos;s all seamless.
           </p>
         </div>
       </div>
 
-      <div className={`${nunito.className} flex items-start space-x-10`}>
+      <div
+        className={`${nunito.className} flex md:flex-row flex-col items-start md:space-x-10 space-y-10 md:space-y-0`}
+      >
         {features.map((feat, index) => (
           <div
             className="flex flex-col border-t-2 border-t-white pt-5 space-y-3 w-full"

@@ -23,7 +23,7 @@ export default function Home() {
           width={1000}
           height={1000}
           src="/images/gwid-hero-section.svg"
-          className="w-screen h-full absolute object-cover -z-10 object-top bottom-16"
+          className="w-screen h-full absolute object-cover -z-10 object-top lg:bottom-16"
           alt="Gwid Hero Section"
         />
 
@@ -38,15 +38,15 @@ export default function Home() {
         <MobileNavbar />
 
         <div
-          className="flex flex-col h-full pt-60 justify-center items-center"
+          className="flex flex-col h-full lg:pt-60 pt-32 justify-center items-center"
           id="home"
         >
           <div className="container flex flex-col space-y-10">
-            <h2 className="text-[55px] font-medium text-center fade-text">
+            <h2 className="lg:text-[55px] md:text-3xl text-[28px] font-medium text-center fade-text md:leading-11 lg:leading-normal">
               Revolutionizing Gateway <br /> Deployment with Livepeer.
             </h2>
             <p
-              className={`${nunito.className} text-[#AAB4C0] font-medium text-center text-[20px] relative -top-2`}
+              className={`${nunito.className} text-[#AAB4C0] font-medium text-center md:text-xl text-lg relative -top-2`}
             >
               Build AI inference and video streaming infrastructure that
               auto-scales, <br /> costs less, and launches in one click.
@@ -71,7 +71,7 @@ export default function Home() {
 
       <section>
         <div
-          className="w-full h-full rounded-t-[50px] py-20 flex flex-col space-y-20"
+          className="w-full h-full rounded-t-[50px] lg:py-20 py-16 flex flex-col lg:space-y-20 space-y-12"
           style={{
             background:
               "linear-gradient(to bottom, #393979 10%, #121213 50%, #000000 100%)",
@@ -80,7 +80,7 @@ export default function Home() {
           <div className="container">
             <div className="flex flex-col space-y-8">
               <h1
-                className={`${nunito.className} text-white text-center text-[45px] font-semibold`}
+                className={`${nunito.className} text-white text-center lg:text-[45px] md:text-4xl text-2xl font-semibold lg:leading-16`}
               >
                 Get up and running in minutes, <br /> on infrastructure you
                 cannot outgrow.
@@ -89,8 +89,9 @@ export default function Home() {
                 className={`${nunito.className} text-white text-center font-medium leading-[30px]`}
               >
                 Gwid manages battle-tested infrastructure in your own AWS, GCP,
-                or Azure account, so you can <br /> rely on the most performant,
-                scalable, and dependable hosting from day 1.
+                or Azure account, so you can <br className="hidden lg:block" />{" "}
+                rely on the most performant, scalable, and dependable hosting
+                from day 1.
               </p>
               <Link href="/auth/signup" passHref className="w-fit mx-auto">
                 <Button
@@ -108,7 +109,7 @@ export default function Home() {
 
       <section id="how-it-works">
         <div
-          className="w-full h-full rounded-[50px] py-20 mt-10 flex flex-col space-y-20"
+          className="w-full h-full rounded-[50px] md:py-20 py-16 mt-10 flex flex-col space-y-20"
           style={{
             backgroundImage:
               " linear-gradient(135deg, #1A2F51 10%, #5B6384 100%)",
@@ -120,7 +121,7 @@ export default function Home() {
 
       <section id="fund-a-gateway">
         <div className="container flex flex-col space-y-10 mt-56">
-          <h1 className="text-5xl text-white text-center leading-16">
+          <h1 className="lg:text-5xl md:text-4xl text-2xl text-white text-center md:leading-16 leading-12">
             Reinvent media — without the <br /> massive price tag.
           </h1>
           <Link href="/auth/signup" passHref className="mx-auto ">
@@ -144,7 +145,7 @@ export default function Home() {
             width={600}
             height={600}
             src="/images/gwid-pattern-logo.svg"
-            className="absolute bottom-10"
+            className="absolute lg:bottom-10 bottom-0"
             alt=""
           />
         </div>
