@@ -5,6 +5,7 @@ import Sidebar from "../core/sidebar";
 import { HelpCircle, UserCircle } from "lucide-react";
 import { Nunito } from "next/font/google";
 import { useUser } from "@/lib/hooks/use-user";
+import MobileBottomnav from "../core/mobile-bottomnav";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -17,8 +18,11 @@ const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className="bg-app-surface h-full flex">
       <Sidebar />
+
+      <MobileBottomnav />
+
       <div className="w-full h-full flex flex-col py-5">
-        <div className="w-full flex justify-end items-center space-x-7 px-7">
+        <div className="w-full md:flex justify-end items-center space-x-7 px-7 hidden">
           <button className="flex items-center gap-2 text-[#FFFFFFB2] transition-colors duration-200">
             <HelpCircle className="w-5 h-5" strokeWidth={1.5} />
             <span className={`font-medium ${nunito.className}`}>Help</span>
@@ -28,8 +32,11 @@ const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
             <span className={`font-medium ${nunito.className}`}>Account</span>
           </button>
         </div>
+
         {!isLoading && (
-          <main className={`px-10 ${nunito.className} h-full ml-[20%]`}>
+          <main
+            className={`md:px-10 px-5 ${nunito.className} h-full lg:ml-[20%]`}
+          >
             {children}
           </main>
         )}

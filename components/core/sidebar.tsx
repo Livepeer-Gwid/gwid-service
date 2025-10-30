@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import GatewayIcon from "../icons/gateway-icon";
+import ReferralIcon from "../icons/referral-icon";
 import Image from "next/image";
 
 const nunito = Nunito({
@@ -15,9 +16,10 @@ const nunito = Nunito({
   weight: ["300", "400", "500", "600", "700"],
 });
 
-const navItems = [
+export const navItems = [
   { label: "Home", href: "/dashboard", icon: Home },
   { label: "Gateways", href: "/gateways", icon: GatewayIcon },
+  { label: "Referrals", href: "/referrals", icon: ReferralIcon },
   { label: "Settings", href: "/settings", icon: Settings },
 ];
 
@@ -26,7 +28,7 @@ const Sidebar: FC = () => {
 
   return (
     <aside
-      className={`bg-sidebar-surface h-screen w-[20%] border-r-2 border-[#383A3F] px-7 pb-7 pt-12.5 flex flex-col space-y-7 fixed left-0 top-0 ${nunito.className}`}
+      className={`bg-sidebar-surface h-screen w-[20%] border-r-2 border-[#383A3F] px-7 pb-7 pt-12.5 lg:flex hidden flex-col space-y-7 fixed left-0 top-0 ${nunito.className}`}
     >
       <div className="flex items-center justify-between">
         <div className="flex flex-col space-y-4 text-white">
