@@ -19,7 +19,7 @@ const nunito = Nunito({
 export const navItems = [
   { label: "Home", href: "/dashboard", icon: Home },
   { label: "Gateways", href: "/gateways", icon: GatewayIcon },
-  { label: "Referrals", href: "/referrals", icon: ReferralIcon },
+  { label: "Referral", href: "/referral", icon: ReferralIcon },
   { label: "Settings", href: "/settings", icon: Settings },
 ];
 
