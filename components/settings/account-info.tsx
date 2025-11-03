@@ -29,10 +29,10 @@ const AccountInfo = () => {
 
   return (
     <div className="text-white flex flex-col space-y-7">
-      <h3 className="text-2xl font-semibold">Account Information</h3>
+      <h3 className="md:text-2xl text-xl font-semibold">Account Information</h3>
       <Form {...form}>
         <form>
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
             <FormField
               control={form.control}
               name="name"

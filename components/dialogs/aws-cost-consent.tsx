@@ -17,7 +17,7 @@ const AwsCostConsent = ({ open, onClose }: Props) => {
     <Dialog open={open} onOpenChange={onClose}>
       <DialogTitle hidden>AWS Cost Consent</DialogTitle>
       <DialogContent
-        className={`bg-[#FFFFFF0F] border-2 border-[#383A3F] w-xl text-white p-6 rounded-xl ${nunito.className}`}
+        className={`bg-[#FFFFFF0F] border-2 border-[#383A3F] md:w-xl w-[95%] text-white p-6 rounded-xl ${nunito.className}`}
         style={{
           backdropFilter: "blur(20px)",
         }}

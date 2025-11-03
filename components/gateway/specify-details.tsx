@@ -137,7 +137,7 @@ const SpecifyDetails = ({ form, selectStackForm, setCurrentStep }: Props) => {
                     <RadioGroup
                       onValueChange={field.onChange}
                       defaultValue={field.value}
-                      className="grid grid-cols-2 gap-6"
+                      className="grid md:grid-cols-2 grid-cols-1 gap-6"
                     >
                       {["480p0", "720p0", "1080p0"].map((option) => (
                         <FormItem

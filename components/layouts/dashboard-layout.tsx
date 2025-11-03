@@ -21,7 +21,7 @@ const DashboardLayout: FC<PropsWithChildren> = ({ children }) => {
 
       <MobileBottomnav />
 
-      <div className="w-full h-full flex flex-col py-5">
+      <div className="w-full h-full flex flex-col pt-5 lg:pb-5 pb-24">
         <div className="w-full md:flex justify-end items-center space-x-7 px-7 hidden">
           <button className="flex items-center gap-2 text-[#FFFFFFB2] transition-colors duration-200">
             <HelpCircle className="w-5 h-5" strokeWidth={1.5} />

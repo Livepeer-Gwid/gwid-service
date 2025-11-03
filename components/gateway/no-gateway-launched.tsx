@@ -17,10 +17,10 @@ const NoGatewayLaunched = () => {
 
       <div className="w-full p-10 relative flex flex-col space-y-9">
         <div className="flex flex-col space-y-3.5">
-          <h4 className="text-lg font-semibold text-white">
+          <h4 className="md:text-lg font-semibold text-white">
             No gateways have been launched yet
           </h4>
-          <p className="text-[#FFFFFF80] font-medium">
+          <p className="text-[#FFFFFF80] text-sm font-medium">
             Get started by launching a gateway.
           </p>
         </div>

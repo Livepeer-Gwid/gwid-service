@@ -8,7 +8,7 @@ const Settings = () => {
     <div className="w-full flex flex-col space-y-9">
       <div className="flex items-center space-x-4">
         <SettingsIcon size={45} className="text-white" />
-        <h1 className="text-[32px] font-semibold text-white">
+        <h1 className="md:text-[32px] text-2xl font-semibold text-white">
           Account Settings
         </h1>
       </div>

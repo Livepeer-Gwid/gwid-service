@@ -25,8 +25,6 @@ const GatewayConfig = ({ form, data }: Props) => {
     );
   }, [data, selectedProcessor]);
 
-  console.log("ec2s", ec2s);
-
   return (
     <div className="flex flex-col space-y-3 mt-6">
       <h1 className="text-xl font-semibold text-white">Configurations</h1>

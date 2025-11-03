@@ -44,7 +44,7 @@ const SearchGateway = () => {
                   <Input
                     placeholder="Search gateways..."
                     className={cn(
-                      "pl-10 pr-4 py-2 bg-[#171B2080] text-[#FFFFFF80] border border-[#383A3F] focus-visible:ring-0 focus-visible:ring-offset-0 rounded-[10px] h-full",
+                      "pl-10 pr-4 py-2 bg-[#171B2080] text-[#FFFFFF80] border border-[#383A3F] focus-visible:ring-0 focus-visible:ring-offset-0 rounded-[10px] !h-full",
                       form.formState.errors.query && "border-red-500"
                     )}
                     {...field}

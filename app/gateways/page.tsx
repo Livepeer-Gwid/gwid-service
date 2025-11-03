@@ -44,7 +44,7 @@ const Gateways = () => {
         <div className="flex items-center space-x-7 h-11">
           <SearchGateway />
 
-          <div className="flex items-center bg-[#171B2080] border border-[#383A3F] rounded-[10px] h-11">
+          <div className="md:flex hidden items-center bg-[#171B2080] border border-[#383A3F] rounded-[10px] h-11">
             <Button
               type="button"
               variant="ghost"
@@ -61,9 +61,12 @@ const Gateways = () => {
             </Button>
           </div>
 
-          <Link href="/auth/gateway" passHref>
-            <Button className="h-full">
+          <Link href="/auth/gateway" className="h-full" passHref>
+            <Button className="h-full hidden md:flex">
               <Plus className="mr-2" /> Launch New Gateway
+            </Button>
+            <Button className="h-full md:hidden flex">
+              <Plus />
             </Button>
           </Link>
         </div>
@@ -80,7 +83,7 @@ const Gateways = () => {
           <NoGatewayLaunched />
         )}
 
-        <div className="w-full grid grid-cols-3 gap-6 pb-7">
+        <div className="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 pb-7">
           {!isLoading &&
             isSuccess &&
             data.data.data.length > 0 &&

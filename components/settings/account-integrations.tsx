@@ -12,7 +12,7 @@ const AccountIntegrations = () => {
     >
       <h3 className="text-xl font-semibold">Account Integrations</h3>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
         <IntegrationSetting
           name="Your dedicated cloud Account"
           img="/images/gwid-logo.svg"
@@ -25,7 +25,6 @@ const AccountIntegrations = () => {
           service="aws"
           onClick={() => console.log("aws")}
         />
-
         <IntegrationSetting
           name="Google Cloud Platform"
           img="/icons/gwid-gcp.svg"

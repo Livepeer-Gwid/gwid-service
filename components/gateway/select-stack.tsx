@@ -74,7 +74,7 @@ const SelectStackForm = ({ form, setCurrentStep }: Props) => {
                   <RadioGroup
                     onValueChange={field.onChange}
                     defaultValue={field.value}
-                    className="grid grid-cols-2 gap-6"
+                    className="grid md:grid-cols-2 grid-cols-1 gap-6"
                   >
                     <FormItem className="border-[2px] border-[#383A3F] rounded-lg px-4 py-6 flex space-x-3 items-start">
                       <RadioGroupItem value="transcoding" />
@@ -131,7 +131,7 @@ const SelectStackForm = ({ form, setCurrentStep }: Props) => {
                   <RadioGroup
                     onValueChange={field.onChange}
                     defaultValue={field.value}
-                    className="grid grid-cols-3 gap-6"
+                    className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-6"
                   >
                     <FormItem className="border-[2px] border-[#383A3F] rounded-lg px-4 py-6 relative flex flex-col items-center">
                       <Image

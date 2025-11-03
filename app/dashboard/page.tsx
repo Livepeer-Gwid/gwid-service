@@ -30,7 +30,7 @@ const Home = () => {
         </p>
       </div>
 
-      <div className="flex items-center space-x-7 pt-5 pb-2">
+      <div className="flex md:flex-row flex-col items-center md:space-x-7 space-y-5 md:space-y-0 pt-5 pb-2">
         <ServiceCard
           name="Amazon Web Services"
           description="Host in your own cloud"
@@ -64,10 +64,10 @@ const Home = () => {
 
         <div className="w-full p-10 relative flex flex-col space-y-9">
           <div className="flex flex-col space-y-3.5">
-            <h4 className="text-lg font-semibold text-white">
+            <h4 className="md:text-lg font-semibold text-white">
               Want to test Gwid without linking your cloud account?
             </h4>
-            <p className="text-[#FFFFFF80] font-medium">
+            <p className="text-[#FFFFFF80] font-medium text-sm">
               Get started on Gwid and eject to your own cloud account later.
             </p>
           </div>
