@@ -39,6 +39,7 @@ const AccountSecurity = () => {
   const { isPending, mutate } = useMutation({
     mutationFn: changePassword,
     onSuccess: () => {
+      form.reset();
       toast.success("Password updated successfully");
     },
     onError: (err: ResponseError) => setErrorResponse(extractErrorMessage(err)),
