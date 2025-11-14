@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import {
   Form,
   FormControl,
@@ -16,26 +16,51 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { useMutation } from "@tanstack/react-query";
+import { extractErrorMessage } from "@/lib/utils";
+import { changePassword } from "@/lib/api/auth.api";
+import { toast } from "sonner";
+import { ResponseError } from "@/lib/types/error.type";
+import { useState } from "react";
+import ErrorAlert from "../alerts/error-alert";
 
 const AccountSecurity = () => {
+  const [errorResponse, setErrorResponse] = useState<string | null>(null);
+
   const form = useForm<AccountSecuritySchemaType>({
     resolver: zodResolver(AccountSecuritySchema),
     defaultValues: {
       confirmPassword: "",
-      password: "",
-      newPassword: "",
+      current_password: "",
+      new_password: "",
     },
   });
+
+  const { isPending, mutate } = useMutation({
+    mutationFn: changePassword,
+    onSuccess: () => {
+      toast.success("Password updated successfully");
+    },
+    onError: (err: ResponseError) => setErrorResponse(extractErrorMessage(err)),
+  });
+
+  const submit: SubmitHandler<AccountSecuritySchemaType> = async (data) => {
+    setErrorResponse(null);
+    mutate({
+      current_password: data.current_password,
+      new_password: data.new_password,
+    });
+  };
 
   return (
     <div className="text-white flex flex-col space-y-7">
       <h3 className="md:text-2xl text-xl font-semibold">Account Security</h3>
       <Form {...form}>
-        <form>
+        <form onSubmit={form.handleSubmit(submit)}>
           <div className="grid md:grid-cols-2 grid-cols-1 gap-8">
             <FormField
               control={form.control}
-              name="password"
+              name="current_password"
               render={({ field }) => (
                 <FormItem className="text-white">
                   <FormLabel className="font-semibold mb-2">Password</FormLabel>
@@ -53,7 +78,7 @@ const AccountSecurity = () => {
 
             <FormField
               control={form.control}
-              name="newPassword"
+              name="new_password"
               render={({ field }) => (
                 <FormItem className="text-white">
                   <FormLabel className="font-semibold mb-2">
@@ -95,9 +120,12 @@ const AccountSecurity = () => {
           <Button
             type="submit"
             className="bg-[#25213D] border-[#3A3C41] w-fit mt-9"
+            isLoading={isPending}
           >
             Update Passwords
           </Button>
+
+          {errorResponse && <ErrorAlert message={errorResponse} />}
         </form>
       </Form>
     </div>

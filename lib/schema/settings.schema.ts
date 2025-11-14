@@ -7,12 +7,12 @@ export const AccountInfoSchema = z.object({
 
 export const AccountSecuritySchema = z
   .object({
-    password: z.string().min(6, "Password too short"),
-    newPassword: z.string().min(6, "Password too short"),
+    current_password: z.string().min(8, "Password too short, must be 8 digits"),
+    new_password: z.string().min(8, "Password too short, must be 8 digits"),
     confirmPassword: z.string(),
   })
-  .refine((data) => data.newPassword === data.confirmPassword, {
-    path: ["newPassword", "confirmPassword"],
+  .refine((data) => data.new_password === data.confirmPassword, {
+    path: ["new_password", "confirmPassword"],
     message: "Passwords do not match",
   });
 
